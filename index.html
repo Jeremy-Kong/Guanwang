@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="mascot.jpg">
+<link rel="preload" as="image" href="https://assets.jeremykong.club/guanwang/mascot.jpg">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 :root { --neon-red: #ff003c; --dark-red: #8b0000; --blood-red: #dc143c; --pure-black: #000000; --deep-black: #0a0a0a; --cyber-gray: #1a1a1a; --neon-glow: 0 0 10px #ff003c, 0 0 20px #ff003c, 0 0 40px #ff003c; }
@@ -39,15 +39,17 @@ nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content
 .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 100px 0; }
 .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 20% 80%, rgba(139,0,0,0.3) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(255,0,60,0.2) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20,20,20,1) 0%, rgba(0,0,0,1) 100%); }
 .hero-content { text-align: center; position: relative; z-index: 10; }
-.hero-mascot { width: 280px; height: 280px; margin: 0 auto 30px; position: relative; border-radius: 50%; overflow: hidden; border: 4px solid var(--neon-red); box-shadow: 0 0 30px var(--neon-red), inset 0 0 60px rgba(255,0,60,0.3); animation: mascot-glow 3s infinite alternate; }
+.hero-mascot { width: 280px; height: 280px; margin: 0 auto 30px; position: relative; border-radius: 50%; overflow: hidden; border: 4px solid var(--neon-red); box-shadow: 0 0 30px var(--neon-red), inset 0 0 60px rgba(255,0,60,0.3); animation: mascot-glow 3s infinite alternate; transition: all 0.3s ease; z-index: 10; }
 @keyframes mascot-glow { 0% { box-shadow: 0 0 30px var(--neon-red), inset 0 0 60px rgba(255,0,60,0.3); } 100% { box-shadow: 0 0 60px var(--neon-red), inset 0 0 80px rgba(255,0,60,0.5); } }
-.hero-mascot img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.1) saturate(1.2); }
+.hero-mascot img, .hero-mascot video { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.1) saturate(1.2); transition: transform 0.1s linear; }
 .hero-mascot::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, transparent 40%, rgba(255,0,60,0.1) 50%, transparent 60%); animation: shine 3s infinite; }
 @keyframes shine { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 .hero-title { font-family: 'Orbitron', sans-serif; font-size: 5rem; font-weight: 900; letter-spacing: 15px; margin-bottom: 20px; position: relative; }
 .hero-title .glitch { position: relative; color: #fff; text-shadow: 2px 2px var(--neon-red), -2px -2px #00ffff; animation: glitch 2s infinite; }
 @keyframes glitch { 0%, 90%, 100% { text-shadow: 2px 2px var(--neon-red), -2px -2px #00ffff; transform: translate(0); } 92% { text-shadow: -2px 2px var(--neon-red), 2px -2px #00ffff; transform: translate(2px, -2px); } 94% { text-shadow: 2px -2px var(--neon-red), -2px 2px #00ffff; transform: translate(-2px, 2px); } 96% { text-shadow: -2px -2px var(--neon-red), 2px 2px #00ffff; transform: translate(0); } }
 .hero-subtitle { font-size: 1.2rem; color: #888; letter-spacing: 8px; text-transform: uppercase; margin-bottom: 40px; }
+.hero-cta-btn { display: inline-block; padding: 15px 40px; border: 2px solid var(--neon-red); border-radius: 30px; text-decoration: none; font-family: 'Noto Sans SC', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 2px; background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; box-shadow: 0 0 15px rgba(255, 0, 60, 0.5), inset 0 0 15px rgba(255, 0, 60, 0.2); transition: all 0.3s ease; margin-top: 20px; }
+.hero-cta-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 0, 60, 0.7), inset 0 0 25px rgba(255, 0, 60, 0.3); filter: brightness(1.2); }
 .works { padding: 80px 0; position: relative; overflow: hidden; }
 .gallery-title { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--neon-red); text-shadow: 0 0 20px var(--neon-red); padding: 0 60px 30px; letter-spacing: 4px; }
 .gallery-container { display: flex; flex-direction: column; gap: 30px; align-items: center; }
@@ -134,7 +136,7 @@ background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
 .work-desc { font-size: 0.8rem; color: #bbb; }
 .cast { padding: 100px 60px; background: linear-gradient(to bottom, transparent, rgba(139,0,0,0.1), transparent); }
 .cast-title { font-family: 'Orbitron', sans-serif; font-size: 2rem; margin-bottom: 60px; color: var(--neon-red); text-shadow: 0 0 20px var(--neon-red); letter-spacing: 4px; }
-.cast-list { display: flex; flex-direction: column; gap: 60px; max-width: 1400px; margin: 0 auto; }
+.cast-list { display: flex; flex-direction: column; gap: 60px; max-width: 1400px; margin: 0 auto; transform: translateX(-28px); }
 .cast-member { display: flex; flex-direction: column; gap: 20px; }
 .cast-info { display: flex; align-items: baseline; gap: 15px; padding: 0 20px; }
 .cast-name { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.3); }
@@ -217,6 +219,7 @@ text-shadow: 0 0 10px var(--neon-red);
 @media (max-width: 768px) {
 .cast-row { margin-bottom: 30px; }
 .cast-row:last-child { margin-bottom: 0; }
+.cast-list { transform: translateX(-10px); }
 }
 
 @media (max-width: 480px) {
@@ -257,9 +260,10 @@ text-shadow: 0 0 10px var(--neon-red);
 <section class="hero">
 <div class="hero-bg"></div>
 <div class="hero-content">
-<div class="hero-mascot"><img src="mascot.jpg" alt="JeremyKong Mascot" fetchpriority="high"></div>
+<div class="hero-mascot"><video autoplay loop muted playsinline poster="https://assets.jeremykong.club/guanwang/mascot.jpg"><source src="https://assets.jeremykong.club/%E8%93%84%E5%8A%9B%E5%BE%85%E5%8F%91.mp4" type="video/mp4"></video></div>
 <h1 class="hero-title"><span class="glitch">JEREMY·KONG</span></h1>
 <p class="hero-subtitle">影视工坊</p>
+<a href="https://www.jeremykong.club/hepai/" class="hero-cta-btn">跟着小孔去冒险</a>
 </div>
 </section>
 <section class="works" id="works">
@@ -267,48 +271,48 @@ text-shadow: 0 0 10px var(--neon-red);
 <div class="gallery-container">
 <!-- 第1行 - 紫红霓虹系 -->
 <div class="gallery-row">
-<div class="work-card"><img loading="lazy" src="xintangcheng/03e7ed17-b38f-44ea-b173-fa906f87de1b.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">霓虹街道</h3><p class="work-desc">赛博朋克城市</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/18c3b87d-3ef1-43b0-834f-94c5fbaf3726.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">街头战斗</h3><p class="work-desc">动作场景</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/18c5f3ec-9989-439c-9bbc-58c689a72ea0.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">机械改造</h3><p class="work-desc">实验室场景</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/384c00f8-010f-428c-8d1d-30aff1237ef4.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">数据风暴</h3><p class="work-desc">数字世界</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/47bc82ed-cd56-436b-82af-33a3b3e44b70.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">赛博空间</h3><p class="work-desc">网络空间</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/03e7ed17-b38f-44ea-b173-fa906f87de1b.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">霓虹街道</h3><p class="work-desc">赛博朋克城市</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/18c3b87d-3ef1-43b0-834f-94c5fbaf3726.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">街头战斗</h3><p class="work-desc">动作场景</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/18c5f3ec-9989-439c-9bbc-58c689a72ea0.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">机械改造</h3><p class="work-desc">实验室场景</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/384c00f8-010f-428c-8d1d-30aff1237ef4.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">数据风暴</h3><p class="work-desc">数字世界</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/47bc82ed-cd56-436b-82af-33a3b3e44b70.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">赛博空间</h3><p class="work-desc">网络空间</p></div></div>
 </div>
 <!-- 第2行 - 蓝绿霓虹系 -->
 <div class="gallery-row">
-<div class="work-card"><img loading="lazy" src="xintangcheng/4dc49a20-6147-42b0-a725-fabd305395d5.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">雨夜独行</h3><p class="work-desc">城市夜景</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/54624219-2d2a-4596-a451-344745815c8a.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">霓虹武士</h3><p class="work-desc">东方美学</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/5c727bd4-6eda-438e-a58b-c3ef6c4f262f.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">深海探索</h3><p class="work-desc">水下世界</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/xiaokong_cyberpunk_new.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">小孔武士</h3><p class="work-desc">赛博朋克战士</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/663df7dc-af1d-4a9b-b1c0-e85f6a9ac878.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">极光之夜</h3><p class="work-desc">自然奇观</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/6f6b531d-29f4-4955-9f3e-47bf28520fe8.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">量子计算</h3><p class="work-desc">科技前沿</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/4dc49a20-6147-42b0-a725-fabd305395d5.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">雨夜独行</h3><p class="work-desc">城市夜景</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/54624219-2d2a-4596-a451-344745815c8a.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">霓虹武士</h3><p class="work-desc">东方美学</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/5c727bd4-6eda-438e-a58b-c3ef6c4f262f.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">深海探索</h3><p class="work-desc">水下世界</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/xiaokong_cyberpunk_new.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">小孔武士</h3><p class="work-desc">赛博朋克战士</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/663df7dc-af1d-4a9b-b1c0-e85f6a9ac878.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">极光之夜</h3><p class="work-desc">自然奇观</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/6f6b531d-29f4-4955-9f3e-47bf28520fe8.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">量子计算</h3><p class="work-desc">科技前沿</p></div></div>
 </div>
 <!-- 第3行 - 橙红火焰系 -->
 <div class="gallery-row">
-<div class="work-card"><img loading="lazy" src="xintangcheng/79892416-b684-4cc5-901b-6fa970262136.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">工业之火</h3><p class="work-desc">灾难场景</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/7fd400ba-c444-4f43-9d8e-19441dfaa79e.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">废墟探索</h3><p class="work-desc">后启示录</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/832304e4-ac1e-4a04-8476-3ec2325b2184.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">机械战甲</h3><p class="work-desc">未来战士</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/9f268fe9-5998-4ba3-8b75-4017d4a8696f.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">赤色警戒</h3><p class="work-desc">紧急状态</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/a97e00bb-b98e-43ec-aa1b-5362107ce1c3.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">熔炉核心</h3><p class="work-desc">能源设施</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/acaf3295-b111-42f0-a8d3-588561076563.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">火焰风暴</h3><p class="work-desc">毁灭时刻</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/b16105c9-6d52-437a-9af7-5ad58da738b4.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">炼狱之门</h3><p class="work-desc">地狱景象</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/79892416-b684-4cc5-901b-6fa970262136.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">工业之火</h3><p class="work-desc">灾难场景</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/7fd400ba-c444-4f43-9d8e-19441dfaa79e.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">废墟探索</h3><p class="work-desc">后启示录</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/832304e4-ac1e-4a04-8476-3ec2325b2184.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">机械战甲</h3><p class="work-desc">未来战士</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/9f268fe9-5998-4ba3-8b75-4017d4a8696f.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">赤色警戒</h3><p class="work-desc">紧急状态</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/a97e00bb-b98e-43ec-aa1b-5362107ce1c3.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">熔炉核心</h3><p class="work-desc">能源设施</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/acaf3295-b111-42f0-a8d3-588561076563.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">火焰风暴</h3><p class="work-desc">毁灭时刻</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/b16105c9-6d52-437a-9af7-5ad58da738b4.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">炼狱之门</h3><p class="work-desc">地狱景象</p></div></div>
 </div>
 <!-- 第4行 - 黄绿对比系 -->
 <div class="gallery-row">
-<div class="work-card"><img loading="lazy" src="xintangcheng/b1aa5b0a-0873-4d4a-ba65-2897ca4d9e51.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">毒素泄漏</h3><p class="work-desc">生化危机</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/b46fd810-c8da-4c02-b522-ef5be96364bf.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">霓虹追逐</h3><p class="work-desc">高速动作</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/b5481f0e-5bcd-4adc-9a35-4ba04009d975.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">地下世界</h3><p class="work-desc">暗巷深处</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/ba87dc69-e279-44d9-9efd-e491c650b9cf.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">义体医生</h3><p class="work-desc">黑市诊所</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/bb8e9702-8827-4740-9dca-9ad5ada74e71.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">酸雨侵蚀</h3><p class="work-desc">环境污染</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/c5b8925a-2f2e-4001-9a09-1992a887891d.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">荧光森林</h3><p class="work-desc">变异生态</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/b1aa5b0a-0873-4d4a-ba65-2897ca4d9e51.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">毒素泄漏</h3><p class="work-desc">生化危机</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/b46fd810-c8da-4c02-b522-ef5be96364bf.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">霓虹追逐</h3><p class="work-desc">高速动作</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/b5481f0e-5bcd-4adc-9a35-4ba04009d975.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">地下世界</h3><p class="work-desc">暗巷深处</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/ba87dc69-e279-44d9-9efd-e491c650b9cf.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">义体医生</h3><p class="work-desc">黑市诊所</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/bb8e9702-8827-4740-9dca-9ad5ada74e71.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">酸雨侵蚀</h3><p class="work-desc">环境污染</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/c5b8925a-2f2e-4001-9a09-1992a887891d.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">荧光森林</h3><p class="work-desc">变异生态</p></div></div>
 </div>
 <!-- 第5行 - 黑白暗色系 -->
 <div class="gallery-row">
-<div class="work-card"><img loading="lazy" src="xintangcheng/cf70dd56-54ba-424f-9001-ad9aa9e0e947.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">雨夜天台</h3><p class="work-desc">黑白漫画</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/d83f1705-1eb5-4e93-a183-2b17ee761c1e.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">品牌宣言</h3><p class="work-desc">核心理念</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/dd923848-625c-4f47-b8e1-64bb22e2ed49.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">暗影潜行</h3><p class="work-desc">潜行任务</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/df5c1661-b454-4635-8fac-35434af80003.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">记忆碎片</h3><p class="work-desc">回忆场景</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/f7a59684-31b0-4e43-889a-81e8e79f7a2e.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">迷雾重重</h3><p class="work-desc">悬疑氛围</p></div></div>
-<div class="work-card"><img loading="lazy" src="xintangcheng/fcf480a3-8ed9-4404-85c0-58626ed39dc6.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">monochrome</h3><p class="work-desc">黑白世界</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/cf70dd56-54ba-424f-9001-ad9aa9e0e947.jpg" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">雨夜天台</h3><p class="work-desc">黑白漫画</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/d83f1705-1eb5-4e93-a183-2b17ee761c1e.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">品牌宣言</h3><p class="work-desc">核心理念</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/dd923848-625c-4f47-b8e1-64bb22e2ed49.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">暗影潜行</h3><p class="work-desc">潜行任务</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/df5c1661-b454-4635-8fac-35434af80003.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">记忆碎片</h3><p class="work-desc">回忆场景</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/f7a59684-31b0-4e43-889a-81e8e79f7a2e.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">迷雾重重</h3><p class="work-desc">悬疑氛围</p></div></div>
+<div class="work-card"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/fcf480a3-8ed9-4404-85c0-58626ed39dc6.png" alt="Work" class="work-image"><div class="work-info"><h3 class="work-title">monochrome</h3><p class="work-desc">黑白世界</p></div></div>
 </div>
 </div>
 </section>
@@ -322,12 +326,12 @@ text-shadow: 0 0 10px var(--neon-red);
 <span class="cast-role" style="color: var(--neon-red);">"小孔"</span>
 </div>
 <div class="cast-photos">
-<div class="cast-photo"><img loading="lazy" src="stickers/new_xiaokong_compressed/8db2bcdc-9e3f-4ae5-9944-0d9f3c834d52.png" alt="小孔"></div>
-<div class="cast-photo"><img loading="lazy" src="stickers/new_xiaokong_compressed/332b45b5-068a-433f-97df-94eee1d1c52f.png" alt="小孔"></div>
-<div class="cast-photo"><img loading="lazy" src="stickers/new_xiaokong_compressed/8c6fe6e5-af36-41db-ba0e-0a48a2175846.png" alt="小孔"></div>
-<div class="cast-photo"><img loading="lazy" src="stickers/new_xiaokong_compressed/ca0473bc-77a7-4d73-b381-a830db84b509.png" alt="小孔"></div>
-<div class="cast-photo"><img loading="lazy" src="stickers/new_xiaokong_compressed/fa0a1ac1-72ba-4282-b4a9-49bcebab3c01.png" alt="小孔"></div>
-<div class="cast-photo"><img loading="lazy" src="stickers/new_xiaokong_compressed/f8376dbe-fbf4-45fb-811c-9b3944dd3c2b.png" alt="小孔"></div>
+<div class="cast-photo"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/8db2bcdc-9e3f-4ae5-9944-0d9f3c834d52.png" alt="小孔"></div>
+<div class="cast-photo"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/332b45b5-068a-433f-97df-94eee1d1c52f.png" alt="小孔"></div>
+<div class="cast-photo"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/8c6fe6e5-af36-41db-ba0e-0a48a2175846.png" alt="小孔"></div>
+<div class="cast-photo"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/ca0473bc-77a7-4d73-b381-a830db84b509.png" alt="小孔"></div>
+<div class="cast-photo"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/fa0a1ac1-72ba-4282-b4a9-49bcebab3c01.png" alt="小孔"></div>
+<div class="cast-photo"><img loading="lazy" src="https://assets.jeremykong.club/guanwang/f8376dbe-fbf4-45fb-811c-9b3944dd3c2b.png" alt="小孔"></div>
 </div>
 </div>
 <!-- 演职人员容器 - 移动端垂直布局 -->
@@ -480,6 +484,8 @@ imageObserver.observe(img);
 // 移动端触摸优化
 document.addEventListener('touchstart', function() {}, {passive: true});
 document.addEventListener('touchmove', function() {}, {passive: true});
+
+
 </script>
 </body>
 </html>
