@@ -15,21 +15,15 @@ html { scroll-behavior: smooth; }
 body { font-family: 'Noto Sans SC', sans-serif; background: var(--pure-black); color: #fff; overflow-x: hidden; cursor: crosshair; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .scanlines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1)); background-size: 100% 4px; animation: scanline 8s linear infinite; }
 @keyframes scanline { 0% { transform: translateY(0); } 100% { transform: translateY(10px); } }
-.floating-eyes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; overflow: hidden; }
-.mechanical-eye { position: absolute; width: 60px; height: 60px; opacity: 0.6; animation: float 15s infinite ease-in-out; }
-.mechanical-eye::before { content: ''; position: absolute; width: 100%; height: 100%; border: 3px solid var(--neon-red); border-radius: 50%; box-shadow: 0 0 15px var(--neon-red), inset 0 0 15px var(--neon-red); }
-.mechanical-eye::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--neon-red); border-radius: 50%; box-shadow: 0 0 20px var(--neon-red); animation: pulse 2s infinite; }
-.mechanical-eye:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-.mechanical-eye:nth-child(2) { top: 30%; right: 8%; animation-delay: 3s; }
-.mechanical-eye:nth-child(3) { top: 60%; left: 3%; animation-delay: 6s; }
-.mechanical-eye:nth-child(4) { top: 80%; right: 5%; animation-delay: 9s; }
-.mechanical-eye:nth-child(5) { top: 45%; left: 15%; animation-delay: 12s; }
-@keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-30px) rotate(90deg); } 50% { transform: translateY(0) rotate(180deg); } 75% { transform: translateY(30px) rotate(270deg); } }
-@keyframes pulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.7; } }
+
 .main-content { min-height: 100vh; position: relative; z-index: 10; }
-nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 20px 60px; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); z-index: 1000; }
+nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: flex-start; padding: 20px 60px; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); z-index: 1000; }
 .logo { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--neon-red); text-shadow: var(--neon-glow); letter-spacing: 4px; position: relative; }
 .logo::after { content: 'STUDIO'; position: absolute; bottom: -8px; left: 0; font-size: 0.4rem; letter-spacing: 8px; color: #666; }
+.nav-left-wrapper { display: flex; flex-direction: column; gap: 15px; }
+.nav-mascot { width: 140px; height: 140px; position: relative; border-radius: 50%; overflow: hidden; border: 3px solid var(--neon-red); box-shadow: 0 0 20px var(--neon-red), inset 0 0 40px rgba(255,0,60,0.3); animation: mascot-glow 3s infinite alternate; pointer-events: auto; }
+.nav-mascot video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; display: block; }
+.nav-cta-btn { display: inline-block; padding: 8px 20px; border: 2px solid var(--neon-red); border-radius: 20px; text-decoration: none; font-family: 'Noto Sans SC', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; box-shadow: 0 0 10px rgba(255, 0, 60, 0.5), inset 0 0 10px rgba(255, 0, 60, 0.2); transition: all 0.3s ease; text-align: center; width: fit-content; }
 .nav-links { display: flex; gap: 40px; list-style: none; }
 .nav-links a { color: #fff; text-decoration: none; font-family: 'Noto Sans SC', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; position: relative; transition: all 0.3s; }
 .nav-links a::before { content: '['; position: absolute; left: -10px; opacity: 0; color: var(--neon-red); transition: all 0.3s; }
@@ -37,7 +31,23 @@ nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content
 .nav-links a:hover { color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red); }
 .nav-links a:hover::before, .nav-links a:hover::after { opacity: 1; }
 .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 100px 0; }
-.hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 20% 80%, rgba(139,0,0,0.3) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(255,0,60,0.2) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20,20,20,1) 0%, rgba(0,0,0,1) 100%); }
+.hero-bg-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
+.hero-bg-video video { width: 100%; height: 100%; object-fit: cover; }
+video::-webkit-media-controls { display: none !important; visibility: hidden !important; }
+video::-webkit-media-controls-overlay-play-button { display: none !important; visibility: hidden !important; opacity: 0 !important; }
+video::-webkit-media-controls-start-playback-button { display: none !important; visibility: hidden !important; opacity: 0 !important; }
+video::-webkit-media-controls-play-button { display: none !important; visibility: hidden !important; opacity: 0 !important; }
+video::-webkit-media-controls-panel { display: none !important; visibility: hidden !important; }
+video::-webkit-media-controls-timeline { display: none !important; visibility: hidden !important; }
+video::-webkit-media-controls-current-time-display { display: none !important; visibility: hidden !important; }
+video::-webkit-media-controls-time-remaining-display { display: none !important; visibility: hidden !important; }
+video::-webkit-media-controls-volume-slider { display: none !important; visibility: hidden !important; }
+video::-webkit-media-controls-mute-button { display: none !important; visibility: hidden !important; }
+video::-webkit-media-controls-fullscreen-button { display: none !important; visibility: hidden !important; }
+video { pointer-events: none; -webkit-appearance: none; appearance: none; }
+video::-webkit-media-controls-enclosure { display: none !important; }
+video::-webkit-media-controls-container { display: none !important; }
+.hero-bg-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 20% 80%, rgba(139,0,0,0.1) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(255,0,60,0.1) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20,20,20,0.3) 0%, rgba(0,0,0,0.4) 100%); z-index: 1; pointer-events: none; }
 .hero-content { text-align: center; position: relative; z-index: 10; }
 .hero-mascot { width: 280px; height: 280px; margin: 0 auto 30px; position: relative; border-radius: 50%; overflow: hidden; border: 4px solid var(--neon-red); box-shadow: 0 0 30px var(--neon-red), inset 0 0 60px rgba(255,0,60,0.3); animation: mascot-glow 3s infinite alternate; transition: all 0.3s ease; z-index: 10; }
 @keyframes mascot-glow { 0% { box-shadow: 0 0 30px var(--neon-red), inset 0 0 60px rgba(255,0,60,0.3); } 100% { box-shadow: 0 0 60px var(--neon-red), inset 0 0 80px rgba(255,0,60,0.5); } }
@@ -163,7 +173,6 @@ footer { padding: 40px; text-align: center; border-top: 1px solid var(--cyber-gr
 .footer-logo { font-family: 'Orbitron', sans-serif; color: var(--neon-red); margin-bottom: 20px; }
 @media (max-width: 768px) {
 .hero-title { font-size: 2.5rem; letter-spacing: 5px; }
-.hero-mascot { width: 200px; height: 200px; }
 .works { padding: 60px 0; }
 .gallery-title, .cast-title { padding: 0 30px 20px; font-size: 1.5rem; }
 .gallery-row { gap: 15px; }
@@ -171,7 +180,11 @@ footer { padding: 40px; text-align: center; border-top: 1px solid var(--cyber-gr
 .cast { padding: 60px 30px; }
 .about { padding: 60px 30px; }
 .about-title { font-size: 1.8rem; }
-nav { padding: 20px 30px; }
+nav { padding: 20px 20px; flex-direction: column; align-items: flex-start; gap: 20px; }
+.nav-left-wrapper { gap: 10px; }
+.logo { font-size: 1.2rem; }
+.nav-mascot { width: 100px; height: 100px; }
+.nav-cta-btn { padding: 6px 16px; font-size: 0.65rem; }
 /* 移动端右上角导航 - 纯文字无背景 */
 .nav-links { 
 position: fixed; 
@@ -204,7 +217,7 @@ color: var(--neon-red);
 text-shadow: 0 0 10px var(--neon-red);
 }
 .nav-links a::before, .nav-links a::after { display: none; }
-.logo { font-size: 1.2rem; }
+.hero-bg-video video { object-position: center center; }
 }
 
 /* 演职人员布局 - 桌面端横向 */
@@ -241,16 +254,12 @@ text-shadow: 0 0 10px var(--neon-red);
 </head>
 <body>
 <div class="scanlines"></div>
-<div class="floating-eyes">
-<div class="mechanical-eye"></div>
-<div class="mechanical-eye"></div>
-<div class="mechanical-eye"></div>
-<div class="mechanical-eye"></div>
-<div class="mechanical-eye"></div>
-</div>
 <div class="main-content">
 <nav>
+<div class="nav-left-wrapper">
 <div class="logo">JEREMY·KONG</div>
+<div class="nav-mascot" onclick="window.location.href='https://www.jeremykong.club/hepai/'" style="cursor: pointer;"><video autoplay muted playsinline preload="auto" poster="https://assets.jeremykong.club/guanwang/mascot.jpg"><source src="https://assets.jeremykong.club/%E8%93%84%E5%8A%9B%E5%BE%85%E5%8F%91.mp4" type="video/mp4"></video></div>
+</div>
 <ul class="nav-links">
 <li><a href="#works">《新唐城·故人归》</a></li>
 <li><a href="#cast">旗下艺人</a></li>
@@ -258,12 +267,14 @@ text-shadow: 0 0 10px var(--neon-red);
 </ul>
 </nav>
 <section class="hero">
-<div class="hero-bg"></div>
+<div class="hero-bg-video">
+<video id="bg-video-1" autoplay muted playsinline preload="auto" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"><source src="https://assets.jeremykong.club/%E4%B8%8B%E5%AE%9A%E5%86%B3%E5%BF%83.mp4" type="video/mp4"></video>
+<video id="bg-video-2" muted playsinline preload="auto" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s;"><source src="https://assets.jeremykong.club/%E6%8F%A1%E5%88%80.mp4" type="video/mp4"></video>
+</div>
+<div class="hero-bg-overlay"></div>
 <div class="hero-content">
-<div class="hero-mascot"><video autoplay loop muted playsinline poster="https://assets.jeremykong.club/guanwang/mascot.jpg"><source src="https://assets.jeremykong.club/%E8%93%84%E5%8A%9B%E5%BE%85%E5%8F%91.mp4" type="video/mp4"></video></div>
 <h1 class="hero-title"><span class="glitch">JEREMY·KONG</span></h1>
 <p class="hero-subtitle">影视工坊</p>
-<a href="https://www.jeremykong.club/hepai/" class="hero-cta-btn">跟着小孔去冒险</a>
 </div>
 </section>
 <section class="works" id="works">
@@ -394,15 +405,6 @@ text-shadow: 0 0 10px var(--neon-red);
 </footer>
 </div>
 <script>
-document.addEventListener('mousemove', (e) => {
-const eyes = document.querySelectorAll('.mechanical-eye');
-eyes.forEach((eye, index) => {
-const speed = (index + 1) * 0.02;
-const x = e.clientX * speed;
-const y = e.clientY * speed;
-eye.style.transform = `translate(${x}px, ${y}px)`;
-});
-});
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 anchor.addEventListener('click', function (e) {
 e.preventDefault();
@@ -422,6 +424,36 @@ const preloadImages = ['mascot.jpg'];
 preloadImages.forEach(src => {
 const img = new Image();
 img.src = src;
+});
+
+// 视频预加载和播放优化
+document.addEventListener('DOMContentLoaded', () => {
+  const videos = document.querySelectorAll('video');
+  
+  videos.forEach(video => {
+    // 移除 controls 属性（如果存在）
+    video.removeAttribute('controls');
+    
+    // 强制加载
+    video.load();
+    
+    // 尝试播放
+    const playVideo = () => {
+      const playPromise = video.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log('自动播放被阻止:', error);
+        });
+      }
+    };
+    
+    // 页面加载完成后立即播放
+    playVideo();
+    
+    // 监听 canplaythrough 事件，确保视频准备好后播放
+    video.addEventListener('canplaythrough', playVideo);
+  });
 });
 
 // 图片懒加载优化 - 提前200px开始加载
@@ -485,6 +517,31 @@ imageObserver.observe(img);
 document.addEventListener('touchstart', function() {}, {passive: true});
 document.addEventListener('touchmove', function() {}, {passive: true});
 
+// 背景视频循环播放控制
+const bgVideo1 = document.getElementById('bg-video-1');
+const bgVideo2 = document.getElementById('bg-video-2');
+
+if (bgVideo1 && bgVideo2) {
+  let currentVideo = 1;
+  
+  bgVideo1.addEventListener('ended', () => {
+    // 第一个视频结束，切换到第二个
+    bgVideo1.style.opacity = '0';
+    bgVideo2.style.opacity = '1';
+    bgVideo2.currentTime = 0;
+    bgVideo2.play();
+    currentVideo = 2;
+  });
+  
+  bgVideo2.addEventListener('ended', () => {
+    // 第二个视频结束，切换到第一个
+    bgVideo2.style.opacity = '0';
+    bgVideo1.style.opacity = '1';
+    bgVideo1.currentTime = 0;
+    bgVideo1.play();
+    currentVideo = 1;
+  });
+}
 
 </script>
 </body>
