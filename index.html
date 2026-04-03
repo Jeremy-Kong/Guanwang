@@ -19,7 +19,8 @@ body { font-family: 'Noto Sans SC', sans-serif; background: var(--pure-black); c
 .main-content { min-height: 100vh; position: relative; z-index: 10; }
 nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: flex-start; padding: 20px 60px; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); z-index: 1000; }
 .logo { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--neon-red); text-shadow: var(--neon-glow); letter-spacing: 4px; position: relative; }
-.logo::after { content: 'STUDIO'; position: absolute; bottom: -8px; left: 0; font-size: 0.4rem; letter-spacing: 8px; color: #666; }
+.logo .glitch { position: relative; color: var(--neon-red); text-shadow: 2px 2px var(--neon-red), -2px -2px var(--neon-red); animation: glitch 2s infinite; }
+.logo::after { content: 'STUDIO / 影视工坊'; position: absolute; bottom: -10px; left: 0; font-size: 0.6rem; letter-spacing: 6px; color: #666; }
 .nav-left-wrapper { display: flex; flex-direction: column; gap: 15px; }
 .nav-mascot { width: 140px; height: 140px; position: relative; border-radius: 50%; overflow: hidden; border: 3px solid var(--neon-red); box-shadow: 0 0 20px var(--neon-red), inset 0 0 40px rgba(255,0,60,0.3); animation: mascot-glow 3s infinite alternate; pointer-events: auto; }
 .nav-mascot video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; display: block; }
@@ -47,7 +48,7 @@ video::-webkit-media-controls-fullscreen-button { display: none !important; visi
 video { pointer-events: none; -webkit-appearance: none; appearance: none; }
 video::-webkit-media-controls-enclosure { display: none !important; }
 video::-webkit-media-controls-container { display: none !important; }
-.hero-bg-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 20% 80%, rgba(139,0,0,0.1) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(255,0,60,0.1) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20,20,20,0.3) 0%, rgba(0,0,0,0.4) 100%); z-index: 1; pointer-events: none; }
+.hero-bg-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 20% 80%, rgba(139,0,0,0.07) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(255,0,60,0.07) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20,20,20,0.21) 0%, rgba(0,0,0,0.28) 100%); z-index: 1; pointer-events: none; }
 .hero-content { text-align: center; position: relative; z-index: 10; }
 .hero-mascot { width: 280px; height: 280px; margin: 0 auto 30px; position: relative; border-radius: 50%; overflow: hidden; border: 4px solid var(--neon-red); box-shadow: 0 0 30px var(--neon-red), inset 0 0 60px rgba(255,0,60,0.3); animation: mascot-glow 3s infinite alternate; transition: all 0.3s ease; z-index: 10; }
 @keyframes mascot-glow { 0% { box-shadow: 0 0 30px var(--neon-red), inset 0 0 60px rgba(255,0,60,0.3); } 100% { box-shadow: 0 0 60px var(--neon-red), inset 0 0 80px rgba(255,0,60,0.5); } }
@@ -250,16 +251,19 @@ text-shadow: 0 0 10px var(--neon-red);
 ::-webkit-scrollbar-track { background: var(--deep-black); }
 ::-webkit-scrollbar-thumb { background: var(--neon-red); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--blood-red); }
+.floating-mascot { position: fixed; bottom: 30px; right: 30px; width: 96px; height: 96px; z-index: 9998; cursor: pointer; transition: all 0.3s ease; }
+.floating-mascot:hover { transform: scale(1.1); }
+.floating-mascot video { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 3px solid var(--neon-red); box-shadow: 0 0 20px var(--neon-red), inset 0 0 40px rgba(255,0,60,0.3); animation: mascot-glow 3s infinite alternate; pointer-events: none; }
+@media (max-width: 768px) {
+.floating-mascot { width: 64px; height: 64px; bottom: 20px; right: 20px; }
+}
 </style>
 </head>
 <body>
 <div class="scanlines"></div>
 <div class="main-content">
 <nav>
-<div class="nav-left-wrapper">
 <div class="logo">JEREMY·KONG</div>
-<div class="nav-mascot" onclick="window.location.href='https://www.jeremykong.club/hepai/'" style="cursor: pointer;"><video autoplay muted playsinline preload="auto" poster="https://assets.jeremykong.club/guanwang/mascot.jpg"><source src="https://assets.jeremykong.club/%E8%93%84%E5%8A%9B%E5%BE%85%E5%8F%91.mp4" type="video/mp4"></video></div>
-</div>
 <ul class="nav-links">
 <li><a href="#works">《新唐城·故人归》</a></li>
 <li><a href="#cast">旗下艺人</a></li>
@@ -268,13 +272,11 @@ text-shadow: 0 0 10px var(--neon-red);
 </nav>
 <section class="hero">
 <div class="hero-bg-video">
-<video id="bg-video-1" autoplay muted playsinline preload="auto" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"><source src="https://assets.jeremykong.club/%E4%B8%8B%E5%AE%9A%E5%86%B3%E5%BF%83.mp4" type="video/mp4"></video>
-<video id="bg-video-2" muted playsinline preload="auto" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s;"><source src="https://assets.jeremykong.club/%E6%8F%A1%E5%88%80.mp4" type="video/mp4"></video>
+<video id="bg-video-1" autoplay muted playsinline webkit-playsinline preload="auto" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"><source src="https://assets.jeremykong.club/%E4%B8%8B%E5%AE%9A%E5%86%B3%E5%BF%831.mp4" type="video/mp4"></video>
+<video id="bg-video-2" muted playsinline webkit-playsinline preload="auto" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.2s;"><source src="https://assets.jeremykong.club/%E6%8F%A1%E5%88%801.mp4" type="video/mp4"></video>
 </div>
 <div class="hero-bg-overlay"></div>
 <div class="hero-content">
-<h1 class="hero-title"><span class="glitch">JEREMY·KONG</span></h1>
-<p class="hero-subtitle">影视工坊</p>
 </div>
 </section>
 <section class="works" id="works">
@@ -428,18 +430,19 @@ img.src = src;
 
 // 视频预加载和播放优化
 document.addEventListener('DOMContentLoaded', () => {
-  const videos = document.querySelectorAll('video');
+  // 只处理吉祥物视频，不处理背景视频（背景视频由专门的逻辑控制）
+  const mascotVideo = document.querySelector('.floating-mascot video');
   
-  videos.forEach(video => {
+  if (mascotVideo) {
     // 移除 controls 属性（如果存在）
-    video.removeAttribute('controls');
+    mascotVideo.removeAttribute('controls');
     
     // 强制加载
-    video.load();
+    mascotVideo.load();
     
     // 尝试播放
     const playVideo = () => {
-      const playPromise = video.play();
+      const playPromise = mascotVideo.play();
       
       if (playPromise !== undefined) {
         playPromise.catch(error => {
@@ -452,8 +455,8 @@ document.addEventListener('DOMContentLoaded', () => {
     playVideo();
     
     // 监听 canplaythrough 事件，确保视频准备好后播放
-    video.addEventListener('canplaythrough', playVideo);
-  });
+    mascotVideo.addEventListener('canplaythrough', playVideo);
+  }
 });
 
 // 图片懒加载优化 - 提前200px开始加载
@@ -544,5 +547,6 @@ if (bgVideo1 && bgVideo2) {
 }
 
 </script>
+<div class="floating-mascot" onclick="window.location.href='https://www.jeremykong.club/hepai/'"><video autoplay loop muted playsinline webkit-playsinline poster="https://assets.jeremykong.club/guanwang/mascot.jpg"><source src="https://assets.jeremykong.club/%E8%93%84%E5%8A%9B%E5%BE%85%E5%8F%91.mp4" type="video/mp4"></video></div>
 </body>
 </html>
